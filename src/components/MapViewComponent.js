@@ -70,7 +70,7 @@ class MapViewComponent extends React.Component {
       return (o.coordinate.latitude === e.nativeEvent.coordinate.latitude) && (o.coordinate.longitude === e.nativeEvent.coordinate.longitude)
     })
       .title
-      this.props.dispatch(updateMarkerSelection(selected))
+      this.props.updateMarkerSelection(selected)
 
   }
 
@@ -170,4 +170,9 @@ const mapStateToProps = (state, props) => {
         markers: state.mapView.markers,
     }
 }
-export default connect(mapStateToProps)(MapViewComponent)
+
+const mapDispatchToProps = {
+  updateMarkerSelection,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapViewComponent)
